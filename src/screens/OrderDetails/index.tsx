@@ -11,31 +11,7 @@ import {
   getSideLabel,
   getStatusLabel,
 } from '@/utils/formatters';
-import {
-  ContentGrid,
-  Description,
-  DetailCard,
-  DetailLabel,
-  DetailsGrid,
-  DetailValue,
-  ErrorBanner,
-  ExecutionItem,
-  ExecutionList,
-  Eyebrow,
-  HeroActions,
-  HeroCopy,
-  HeroPanel,
-  LoadingState,
-  MetricsGrid,
-  Mono,
-  ScreenStack,
-  SectionTitle,
-  Timeline,
-  TimelineDate,
-  TimelineDescription,
-  TimelineItem,
-  Title,
-} from './styles';
+import * as S from './styles';
 import { useContainer } from './useContainer';
 
 export function OrderDetailsScreen() {
@@ -57,7 +33,7 @@ export function OrderDetailsScreen() {
   if (isLoading && !order) {
     return (
       <Panel>
-        <LoadingState>Carregando detalhes da ordem...</LoadingState>
+        <S.LoadingState>Carregando detalhes da ordem...</S.LoadingState>
       </Panel>
     );
   }
@@ -74,18 +50,18 @@ export function OrderDetailsScreen() {
   }
 
   return (
-    <ScreenStack>
-      <HeroPanel>
-        <HeroCopy>
-          <Eyebrow>{order.id}</Eyebrow>
-          <Title>{order.instrument} em acompanhamento detalhado</Title>
-          <Description>
+    <S.ScreenStack>
+      <S.HeroPanel>
+        <S.HeroCopy>
+          <S.Eyebrow>{order.id}</S.Eyebrow>
+          <S.Title>{order.instrument} em acompanhamento detalhado</S.Title>
+          <S.Description>
             Veja o histórico completo, a quantidade remanescente, execuções já
             realizadas e o status atual da ordem.
-          </Description>
-        </HeroCopy>
+          </S.Description>
+        </S.HeroCopy>
 
-        <HeroActions>
+        <S.HeroActions>
           <Button onClick={handleBack} variant="secondary">
             Voltar ao book
           </Button>
@@ -97,12 +73,12 @@ export function OrderDetailsScreen() {
               Cancelar ordem
             </Button>
           ) : null}
-        </HeroActions>
-      </HeroPanel>
+        </S.HeroActions>
+      </S.HeroPanel>
 
-      {error ? <ErrorBanner>{error}</ErrorBanner> : null}
+      {error ? <S.ErrorBanner>{error}</S.ErrorBanner> : null}
 
-      <MetricsGrid>
+      <S.MetricsGrid>
         <InfoCard
           label="Status"
           support="Situação atual da ordem."
@@ -116,86 +92,86 @@ export function OrderDetailsScreen() {
           value={formatQuantity(order.remainingQuantity)}
           support="Quantidade ainda disponível no livro."
         />
-      </MetricsGrid>
+      </S.MetricsGrid>
 
-      <ContentGrid>
+      <S.ContentGrid>
         <Panel>
-          <SectionTitle>Dados completos da ordem</SectionTitle>
-          <DetailsGrid>
-            <DetailCard>
-              <DetailLabel>ID</DetailLabel>
-              <DetailValue>
-                <Mono>{order.id}</Mono>
-              </DetailValue>
-            </DetailCard>
-            <DetailCard>
-              <DetailLabel>Instrumento</DetailLabel>
-              <DetailValue>{order.instrument}</DetailValue>
-            </DetailCard>
-            <DetailCard>
-              <DetailLabel>Lado</DetailLabel>
-              <DetailValue>
+          <S.SectionTitle>Dados completos da ordem</S.SectionTitle>
+          <S.DetailsGrid>
+            <S.DetailCard>
+              <S.DetailLabel>ID</S.DetailLabel>
+              <S.DetailValue>
+                <S.Mono>{order.id}</S.Mono>
+              </S.DetailValue>
+            </S.DetailCard>
+            <S.DetailCard>
+              <S.DetailLabel>Instrumento</S.DetailLabel>
+              <S.DetailValue>{order.instrument}</S.DetailValue>
+            </S.DetailCard>
+            <S.DetailCard>
+              <S.DetailLabel>Lado</S.DetailLabel>
+              <S.DetailValue>
                 <StatusBadge kind="side" value={order.side} />
-              </DetailValue>
-            </DetailCard>
-            <DetailCard>
-              <DetailLabel>Status</DetailLabel>
-              <DetailValue>
+              </S.DetailValue>
+            </S.DetailCard>
+            <S.DetailCard>
+              <S.DetailLabel>Status</S.DetailLabel>
+              <S.DetailValue>
                 <StatusBadge kind="status" value={order.status} />
-              </DetailValue>
-            </DetailCard>
-            <DetailCard>
-              <DetailLabel>Quantidade total</DetailLabel>
-              <DetailValue>{formatQuantity(order.quantity)}</DetailValue>
-            </DetailCard>
-            <DetailCard>
-              <DetailLabel>Quantidade restante</DetailLabel>
-              <DetailValue>{formatQuantity(order.remainingQuantity)}</DetailValue>
-            </DetailCard>
-            <DetailCard>
-              <DetailLabel>Criada em</DetailLabel>
-              <DetailValue>{formatDateTime(order.createdAt)}</DetailValue>
-            </DetailCard>
-            <DetailCard>
-              <DetailLabel>Última atualização</DetailLabel>
-              <DetailValue>{formatDateTime(order.updatedAt)}</DetailValue>
-            </DetailCard>
-          </DetailsGrid>
+              </S.DetailValue>
+            </S.DetailCard>
+            <S.DetailCard>
+              <S.DetailLabel>Quantidade total</S.DetailLabel>
+              <S.DetailValue>{formatQuantity(order.quantity)}</S.DetailValue>
+            </S.DetailCard>
+            <S.DetailCard>
+              <S.DetailLabel>Quantidade restante</S.DetailLabel>
+              <S.DetailValue>{formatQuantity(order.remainingQuantity)}</S.DetailValue>
+            </S.DetailCard>
+            <S.DetailCard>
+              <S.DetailLabel>Criada em</S.DetailLabel>
+              <S.DetailValue>{formatDateTime(order.createdAt)}</S.DetailValue>
+            </S.DetailCard>
+            <S.DetailCard>
+              <S.DetailLabel>Última atualização</S.DetailLabel>
+              <S.DetailValue>{formatDateTime(order.updatedAt)}</S.DetailValue>
+            </S.DetailCard>
+          </S.DetailsGrid>
         </Panel>
 
         <Panel>
-          <SectionTitle>Histórico de status</SectionTitle>
-          <Timeline>
+          <S.SectionTitle>Histórico de status</S.SectionTitle>
+          <S.Timeline>
             {order.history.map((entry) => (
-              <TimelineItem key={entry.id}>
+              <S.TimelineItem key={entry.id}>
                 <StatusBadge kind="status" value={entry.status} />
-                <TimelineDate>{formatDateTime(entry.timestamp)}</TimelineDate>
-                <TimelineDescription>{entry.description}</TimelineDescription>
-              </TimelineItem>
+                <S.TimelineDate>{formatDateTime(entry.timestamp)}</S.TimelineDate>
+                <S.TimelineDescription>{entry.description}</S.TimelineDescription>
+              </S.TimelineItem>
             ))}
-          </Timeline>
+          </S.Timeline>
         </Panel>
-      </ContentGrid>
+      </S.ContentGrid>
 
       <Panel>
-        <SectionTitle>Execuções registradas</SectionTitle>
+        <S.SectionTitle>Execuções registradas</S.SectionTitle>
         {order.executions.length === 0 ? (
           <EmptyState
             description="Essa ordem ainda não encontrou contraparte compatível."
             title="Nenhuma execução até o momento"
           />
         ) : (
-          <ExecutionList>
+          <S.ExecutionList>
             {order.executions.map((execution) => (
-              <ExecutionItem key={execution.id}>
-                <strong>Contra ordem: <Mono>{execution.matchedOrderId}</Mono></strong>
-                <TimelineDescription>
+              <S.ExecutionItem key={execution.id}>
+                <strong>Contra ordem: <S.Mono>{execution.matchedOrderId}</S.Mono></strong>
+                <S.TimelineDescription>
                   {formatQuantity(execution.quantity)} unidades a{' '}
                   {formatCurrency(execution.price)} em {formatDateTime(execution.timestamp)}.
-                </TimelineDescription>
-              </ExecutionItem>
+                </S.TimelineDescription>
+              </S.ExecutionItem>
             ))}
-          </ExecutionList>
+          </S.ExecutionList>
         )}
       </Panel>
 
@@ -210,6 +186,6 @@ export function OrderDetailsScreen() {
         Essa ação só é permitida para ordens abertas ou parciais e vai registrar
         um novo evento no histórico da ordem.
       </ConfirmationDialog>
-    </ScreenStack>
+    </S.ScreenStack>
   );
 }

@@ -1,11 +1,11 @@
-import { Description, Title, Wrapper } from './styles';
+import * as S from './styles';
 import type { EmptyStateProps } from './types';
 
 export function EmptyState({ description, title }: EmptyStateProps) {
   return (
-    <Wrapper>
-      <Title>{title}</Title>
-      <Description>{description}</Description>
-    </Wrapper>
+    <S.Wrapper>
+      <S.Title>{title}</S.Title>
+      <S.Description>{description}</S.Description>
+    </S.Wrapper>
   );
 }

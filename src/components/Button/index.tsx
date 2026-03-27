@@ -1,4 +1,4 @@
-import { StyledButton } from './styles';
+import * as S from './styles';
 import type { ButtonProps } from './types';
 
 export function Button({
@@ -9,13 +9,13 @@ export function Button({
   ...buttonProps
 }: ButtonProps) {
   return (
-    <StyledButton
+    <S.StyledButton
       {...buttonProps}
       $fullWidth={fullWidth}
       $size={size}
       $variant={variant}
     >
       {children}
-    </StyledButton>
+    </S.StyledButton>
   );
 }

@@ -6,25 +6,7 @@ import {
   formatQuantity,
   getSideLabel,
 } from "@/utils/formatters";
-import {
-  Actions,
-  ContentGrid,
-  Description,
-  ErrorBanner,
-  Eyebrow,
-  FieldsGrid,
-  FormPanel,
-  FullRow,
-  HeroPanel,
-  PanelTitle,
-  PreviewCard,
-  PreviewLabel,
-  PreviewValue,
-  RuleList,
-  ScreenStack,
-  SidePanel,
-  Title,
-} from "./styles";
+import * as S from './styles';
 import { useContainer } from "./useContainer";
 
 export function CreateOrderScreen() {
@@ -39,25 +21,25 @@ export function CreateOrderScreen() {
   } = useContainer({});
 
   return (
-    <ScreenStack>
-      <HeroPanel>
-        <Eyebrow>Nova ordem</Eyebrow>
-        <Title>Crie uma ordem com validação forte e execução automática.</Title>
-        <Description>
+    <S.ScreenStack>
+      <S.HeroPanel>
+        <S.Eyebrow>Nova ordem</S.Eyebrow>
+        <S.Title>Crie uma ordem com validação forte e execução automática.</S.Title>
+        <S.Description>
           Ao enviar a ordem, o motor verifica contrapartes compatíveis no livro.
           Se houver preço igual ou mais agressivo com quantidade disponível, a
           execução acontece imediatamente.
-        </Description>
-      </HeroPanel>
+        </S.Description>
+      </S.HeroPanel>
 
-      <ContentGrid>
-        <FormPanel onSubmit={handleSubmit}>
-          <PanelTitle>Dados da ordem</PanelTitle>
+      <S.ContentGrid>
+        <S.FormPanel onSubmit={handleSubmit}>
+          <S.PanelTitle>Dados da ordem</S.PanelTitle>
 
-          {error ? <ErrorBanner>{error}</ErrorBanner> : null}
+          {error ? <S.ErrorBanner>{error}</S.ErrorBanner> : null}
 
-          <FieldsGrid>
-            <FullRow>
+          <S.FieldsGrid>
+            <S.FullRow>
               <FormField
                 error={formErrors.instrument}
                 hint="Ex.: PETR4, VALE3, BOVA11, AAPL34."
@@ -71,7 +53,7 @@ export function CreateOrderScreen() {
                   value={formValues.instrument}
                 />
               </FormField>
-            </FullRow>
+            </S.FullRow>
 
             <FormField label="Lado">
               <SelectInput
@@ -99,7 +81,7 @@ export function CreateOrderScreen() {
               />
             </FormField>
 
-            <FullRow>
+            <S.FullRow>
               <FormField error={formErrors.quantity} label="Quantidade">
                 <TextInput
                   min="1"
@@ -112,10 +94,10 @@ export function CreateOrderScreen() {
                   value={formValues.quantity}
                 />
               </FormField>
-            </FullRow>
-          </FieldsGrid>
+            </S.FullRow>
+          </S.FieldsGrid>
 
-          <Actions>
+          <S.Actions>
             <Button
               onClick={handleBackToBook}
               type="button"
@@ -126,49 +108,49 @@ export function CreateOrderScreen() {
             <Button disabled={isSubmitting} type="submit">
               {isSubmitting ? "Enviando ordem..." : "Enviar ordem"}
             </Button>
-          </Actions>
-        </FormPanel>
+          </S.Actions>
+        </S.FormPanel>
 
-        <SidePanel>
-          <PanelTitle>Pré-visualização</PanelTitle>
+        <S.SidePanel>
+          <S.PanelTitle>Pré-visualização</S.PanelTitle>
 
-          <PreviewCard>
-            <PreviewLabel>Instrumento</PreviewLabel>
-            <PreviewValue>{formValues.instrument || "A definir"}</PreviewValue>
-          </PreviewCard>
+          <S.PreviewCard>
+            <S.PreviewLabel>Instrumento</S.PreviewLabel>
+            <S.PreviewValue>{formValues.instrument || "A definir"}</S.PreviewValue>
+          </S.PreviewCard>
 
-          <PreviewCard>
-            <PreviewLabel>Lado</PreviewLabel>
-            <PreviewValue>{getSideLabel(formValues.side)}</PreviewValue>
-          </PreviewCard>
+          <S.PreviewCard>
+            <S.PreviewLabel>Lado</S.PreviewLabel>
+            <S.PreviewValue>{getSideLabel(formValues.side)}</S.PreviewValue>
+          </S.PreviewCard>
 
-          <PreviewCard>
-            <PreviewLabel>Preço estimado</PreviewLabel>
-            <PreviewValue>
+          <S.PreviewCard>
+            <S.PreviewLabel>Preço estimado</S.PreviewLabel>
+            <S.PreviewValue>
               {formValues.price
                 ? formatCurrency(Number(formValues.price))
                 : "R$ 0,00"}
-            </PreviewValue>
-          </PreviewCard>
+            </S.PreviewValue>
+          </S.PreviewCard>
 
-          <PreviewCard>
-            <PreviewLabel>Quantidade</PreviewLabel>
-            <PreviewValue>
+          <S.PreviewCard>
+            <S.PreviewLabel>Quantidade</S.PreviewLabel>
+            <S.PreviewValue>
               {formValues.quantity
                 ? formatQuantity(Number(formValues.quantity))
                 : "0"}
-            </PreviewValue>
-          </PreviewCard>
+            </S.PreviewValue>
+          </S.PreviewCard>
 
-          <PanelTitle>O que acontece após o envio</PanelTitle>
-          <RuleList>
+          <S.PanelTitle>O que acontece após o envio</S.PanelTitle>
+          <S.RuleList>
             <li>A ordem nasce como aberta.</li>
             <li>O matching busca a melhor contraparte compatível por preço.</li>
             <li>Se a quantidade for maior, a ordem continua parcial.</li>
             <li>Ordens abertas ou parciais podem ser canceladas depois.</li>
-          </RuleList>
-        </SidePanel>
-      </ContentGrid>
-    </ScreenStack>
+          </S.RuleList>
+        </S.SidePanel>
+      </S.ContentGrid>
+    </S.ScreenStack>
   );
 }

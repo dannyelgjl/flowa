@@ -1,6 +1,6 @@
 import type { OrderSide, OrderStatus } from '@/types/order';
 import { getSideLabel, getStatusLabel } from '@/utils/formatters';
-import { Badge } from './styles';
+import * as S from './styles';
 import type { StatusBadgeProps } from './types';
 
 export function StatusBadge({ kind, value }: StatusBadgeProps) {
@@ -9,8 +9,8 @@ export function StatusBadge({ kind, value }: StatusBadgeProps) {
     : getSideLabel(value as OrderSide);
 
   return (
-    <Badge $kind={kind} $value={value}>
+    <S.Badge $kind={kind} $value={value}>
       {label}
-    </Badge>
+    </S.Badge>
   );
 }

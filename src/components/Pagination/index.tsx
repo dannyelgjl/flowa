@@ -1,5 +1,5 @@
 import { Button } from '@/components/Button';
-import { Actions, Container, CurrentPage, Summary } from './styles';
+import * as S from './styles';
 import type { PaginationProps } from './types';
 
 export function Pagination({
@@ -9,12 +9,12 @@ export function Pagination({
   totalPages,
 }: PaginationProps) {
   return (
-    <Container>
-      <Summary>
+    <S.Container>
+      <S.Summary>
         {totalItems} ordens encontradas
-      </Summary>
+      </S.Summary>
 
-      <Actions>
+      <S.Actions>
         <Button
           disabled={currentPage <= 1}
           onClick={() => onPageChange(currentPage - 1)}
@@ -23,9 +23,9 @@ export function Pagination({
         >
           Anterior
         </Button>
-        <CurrentPage>
+        <S.CurrentPage>
           Página {currentPage} de {totalPages}
-        </CurrentPage>
+        </S.CurrentPage>
         <Button
           disabled={currentPage >= totalPages}
           onClick={() => onPageChange(currentPage + 1)}
@@ -34,7 +34,7 @@ export function Pagination({
         >
           Próxima
         </Button>
-      </Actions>
-    </Container>
+      </S.Actions>
+    </S.Container>
   );
 }

@@ -6,23 +6,7 @@ import { OrdersTable } from '@/components/OrdersTable';
 import { Pagination } from '@/components/Pagination';
 import { Panel } from '@/components/Panel';
 import { formatQuantity } from '@/utils/formatters';
-import {
-  AsideList,
-  AsideTitle,
-  Description,
-  ErrorBanner,
-  Eyebrow,
-  HeroAside,
-  HeroCopy,
-  HeroPanel,
-  LoadingState,
-  ScreenStack,
-  SectionHeader,
-  SectionMeta,
-  SectionTitle,
-  StatsGrid,
-  Title,
-} from './styles';
+import * as S from './styles';
 import { useContainer } from './useContainer';
 
 export function OrdersScreen() {
@@ -42,31 +26,31 @@ export function OrdersScreen() {
   } = useContainer({});
 
   return (
-    <ScreenStack>
-      <HeroPanel>
-        <HeroCopy>
-          <Eyebrow>Order Management</Eyebrow>
-          <Title>Book com filtros rápidos, execução automática e leitura clara.</Title>
-          <Description>
+    <S.ScreenStack>
+      <S.HeroPanel>
+        <S.HeroCopy>
+          <S.Eyebrow>Order Management</S.Eyebrow>
+          <S.Title>Book com filtros rápidos, execução automática e leitura clara.</S.Title>
+          <S.Description>
             Acompanhe as ordens por instrumento, status, lado e data. O motor
             de matching considera preço agressivo e quantidade disponível para
             atualizar o ciclo da negociação em tempo real.
-          </Description>
+          </S.Description>
           <Button onClick={handleCreateOrder}>Criar nova ordem</Button>
-        </HeroCopy>
+        </S.HeroCopy>
 
-        <HeroAside>
-          <AsideTitle>Regras ativas nesta simulação</AsideTitle>
-          <AsideList>
+        <S.HeroAside>
+          <S.AsideTitle>Regras ativas nesta simulação</S.AsideTitle>
+          <S.AsideList>
             <li>Ordens novas entram sempre com status aberta.</li>
             <li>Execução acontece quando existe contraparte compatível.</li>
             <li>Ordens parciais preservam a quantidade restante.</li>
             <li>Somente ordens abertas ou parciais podem ser canceladas.</li>
-          </AsideList>
-        </HeroAside>
-      </HeroPanel>
+          </S.AsideList>
+        </S.HeroAside>
+      </S.HeroPanel>
 
-      <StatsGrid>
+      <S.StatsGrid>
         <InfoCard
           label="Ordens abertas"
           support="Disponíveis para casar no livro."
@@ -90,15 +74,15 @@ export function OrdersScreen() {
           support="Soma da quantidade ainda em aberto."
           value={formatQuantity(metrics.pendingVolume)}
         />
-      </StatsGrid>
+      </S.StatsGrid>
 
       <Panel>
-        <SectionHeader>
+        <S.SectionHeader>
           <div>
-            <SectionTitle>Filtros do livro</SectionTitle>
-            <SectionMeta>Refine o grid para encontrar ordens com rapidez.</SectionMeta>
+            <S.SectionTitle>Filtros do livro</S.SectionTitle>
+            <S.SectionMeta>Refine o grid para encontrar ordens com rapidez.</S.SectionMeta>
           </div>
-        </SectionHeader>
+        </S.SectionHeader>
         <OrdersFilters
           filters={filters}
           onChange={handleFilterChange}
@@ -107,18 +91,18 @@ export function OrdersScreen() {
       </Panel>
 
       <Panel>
-        <SectionHeader>
+        <S.SectionHeader>
           <div>
-            <SectionTitle>Ordens negociadas</SectionTitle>
-            <SectionMeta>
+            <S.SectionTitle>Ordens negociadas</S.SectionTitle>
+            <S.SectionMeta>
               {paginatedOrders.totalItems} resultados após filtros e ordenação.
-            </SectionMeta>
+            </S.SectionMeta>
           </div>
-        </SectionHeader>
+        </S.SectionHeader>
 
-        {error ? <ErrorBanner>{error}</ErrorBanner> : null}
+        {error ? <S.ErrorBanner>{error}</S.ErrorBanner> : null}
 
-        {isLoading ? <LoadingState>Carregando o livro de ordens...</LoadingState> : null}
+        {isLoading ? <S.LoadingState>Carregando o livro de ordens...</S.LoadingState> : null}
 
         {!isLoading && paginatedOrders.items.length === 0 ? (
           <EmptyState
@@ -144,6 +128,6 @@ export function OrdersScreen() {
           </>
         ) : null}
       </Panel>
-    </ScreenStack>
+    </S.ScreenStack>
   );
 }

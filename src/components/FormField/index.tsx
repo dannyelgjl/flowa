@@ -1,4 +1,4 @@
-import { Hint, Label, Wrapper } from './styles';
+import * as S from './styles';
 import type { FormFieldProps } from './types';
 
 export function FormField({
@@ -10,12 +10,12 @@ export function FormField({
   const supportText = error ?? hint;
 
   return (
-    <Wrapper>
-      <Label>{label}</Label>
+    <S.Wrapper>
+      <S.Label>{label}</S.Label>
       {children}
       {supportText ? (
-        <Hint $isError={Boolean(error)}>{supportText}</Hint>
+        <S.Hint $isError={Boolean(error)}>{supportText}</S.Hint>
       ) : null}
-    </Wrapper>
+    </S.Wrapper>
   );
 }

@@ -1,42 +1,32 @@
 import { Outlet } from 'react-router-dom';
 import { ROUTE_PATHS } from '@/routes/paths';
-import {
-  BrandBlock,
-  BrandDescription,
-  BrandPill,
-  BrandTitle,
-  Header,
-  Main,
-  NavItem,
-  Navigation,
-  Shell,
-} from './styles';
+import * as S from './styles';
 import type { AppShellProps } from './types';
 
 export function AppShell(_props: AppShellProps) {
   void _props;
 
   return (
-    <Shell>
-      <Header>
-        <BrandBlock>
-          <BrandPill>BASE Exchange</BrandPill>
-          <BrandTitle>Gerenciamento de ordens em tempo de decisão</BrandTitle>
-          <BrandDescription>
+    <S.Shell>
+      <S.Header>
+        <S.BrandBlock>
+          <S.BrandPill>BASE Exchange</S.BrandPill>
+          <S.BrandTitle>Gerenciamento de ordens em tempo de decisão</S.BrandTitle>
+          <S.BrandDescription>
             Visualize o livro, acompanhe o ciclo completo das ordens e dispare
             novas negociações com regras de execução consistentes.
-          </BrandDescription>
-        </BrandBlock>
+          </S.BrandDescription>
+        </S.BrandBlock>
 
-        <Navigation aria-label="Navegação principal">
-          <NavItem to={ROUTE_PATHS.orders}>Book</NavItem>
-          <NavItem to={ROUTE_PATHS.createOrder}>Nova ordem</NavItem>
-        </Navigation>
-      </Header>
+        <S.Navigation aria-label="Navegação principal">
+          <S.NavItem to={ROUTE_PATHS.orders}>Book</S.NavItem>
+          <S.NavItem to={ROUTE_PATHS.createOrder}>Nova ordem</S.NavItem>
+        </S.Navigation>
+      </S.Header>
 
-      <Main>
+      <S.Main>
         <Outlet />
-      </Main>
-    </Shell>
+      </S.Main>
+    </S.Shell>
   );
 }

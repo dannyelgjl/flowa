@@ -1,4 +1,4 @@
-import { StyledPanel } from './styles';
+import * as S from './styles';
 import type { PanelProps } from './types';
 
 export function Panel({
@@ -7,8 +7,8 @@ export function Panel({
   padding = '24px',
 }: PanelProps) {
   return (
-    <StyledPanel className={className} $padding={padding}>
+    <S.StyledPanel className={className} $padding={padding}>
       {children}
-    </StyledPanel>
+    </S.StyledPanel>
   );
 }

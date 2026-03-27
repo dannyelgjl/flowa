@@ -1,4 +1,4 @@
-import { Card, Label, Support, Value } from './styles';
+import * as S from './styles';
 import type { InfoCardProps } from './types';
 
 export function InfoCard({
@@ -8,10 +8,10 @@ export function InfoCard({
   value,
 }: InfoCardProps) {
   return (
-    <Card $tone={tone}>
-      <Label>{label}</Label>
-      <Value>{value}</Value>
-      {support ? <Support>{support}</Support> : null}
-    </Card>
+    <S.Card $tone={tone}>
+      <S.Label>{label}</S.Label>
+      <S.Value>{value}</S.Value>
+      {support ? <S.Support>{support}</S.Support> : null}
+    </S.Card>
   );
 }

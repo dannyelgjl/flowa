@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 import { Button } from '@/components/Button';
-import { Actions, Backdrop, Content, Dialog, Title } from './styles';
+import * as S from './styles';
 import type { ConfirmationDialogProps } from './types';
 
 export function ConfirmationDialog({
@@ -17,24 +17,24 @@ export function ConfirmationDialog({
   }
 
   return createPortal(
-    <Backdrop onClick={onCancel}>
-      <Dialog
+    <S.Backdrop onClick={onCancel}>
+      <S.Dialog
         aria-modal="true"
         role="dialog"
         onClick={(event) => event.stopPropagation()}
       >
-        <Title>{title}</Title>
-        <Content>{children}</Content>
-        <Actions>
+        <S.Title>{title}</S.Title>
+        <S.Content>{children}</S.Content>
+        <S.Actions>
           <Button onClick={onCancel} variant="secondary">
             Voltar
           </Button>
           <Button onClick={onConfirm} variant="danger">
             {isLoading ? 'Cancelando...' : confirmLabel}
           </Button>
-        </Actions>
-      </Dialog>
-    </Backdrop>,
+        </S.Actions>
+      </S.Dialog>
+    </S.Backdrop>,
     document.body,
   );
 }
