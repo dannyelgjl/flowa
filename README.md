@@ -31,6 +31,59 @@ Este projeto implementa o módulo de Gerenciamento de Ordens da BASE Exchange, c
 - Motor de matching para execução automática
 - Testes automatizados
 
+## Capturas de tela
+
+### Book de ordens
+
+<table>
+  <tr>
+    <th>Web</th>
+    <th>Mobile</th>
+  </tr>
+  <tr>
+    <td>
+      <img src="./docs/screenshots/orders-web.png" alt="Tela de book de ordens na versão web" />
+    </td>
+    <td>
+      <img src="./docs/screenshots/orders-mobile.png" alt="Tela de book de ordens na versão mobile" width="240" />
+    </td>
+  </tr>
+</table>
+
+### Criação de ordem
+
+<table>
+  <tr>
+    <th>Web</th>
+    <th>Mobile</th>
+  </tr>
+  <tr>
+    <td>
+      <img src="./docs/screenshots/create-order-web.png" alt="Tela de criação de ordem na versão web" />
+    </td>
+    <td>
+      <img src="./docs/screenshots/create-order-mobile.png" alt="Tela de criação de ordem na versão mobile" width="240" />
+    </td>
+  </tr>
+</table>
+
+### Detalhes da ordem
+
+<table>
+  <tr>
+    <th>Web</th>
+    <th>Mobile</th>
+  </tr>
+  <tr>
+    <td>
+      <img src="./docs/screenshots/order-details-web.png" alt="Tela de detalhes da ordem na versão web" />
+    </td>
+    <td>
+      <img src="./docs/screenshots/order-details-mobile.png" alt="Tela de detalhes da ordem na versão mobile" width="240" />
+    </td>
+  </tr>
+</table>
+
 ## Estrutura do projeto
 
 ```text
