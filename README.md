@@ -166,6 +166,12 @@ Os testes cobrem principalmente:
 - validação de criação
 - persistência da API simulada
 
+### Cobertura de testes
+
+O projeto possui cobertura de testes em `100%` para `statements`, `branches`, `functions` e `lines`.
+
+<img src="./docs/screenshots/coverage-report.png" alt="Relatório de cobertura de testes com 100 por cento em todos os indicadores" />
+
 ## .gitignore
 
 O projeto já possui `.gitignore` configurado para ignorar arquivos de build, dependências, logs e arquivos locais de editor.
